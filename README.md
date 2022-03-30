@@ -1,5 +1,5 @@
 # Bundesliga
-This a Soccer Scores Web App, using openligadb.de.
+This is a Django Soccer Scores Web App, using openligadb.de.
 
 
 Show data about Bundesliga 2021/2022 teams:
