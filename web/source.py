@@ -44,8 +44,6 @@ class Bundesliga:
                 'wins': 0,
                 'loses': 0,
                 'draws': 0,
-                'goals': 0,
-                'received_goals': 0,
             }
 
         for m in season:
