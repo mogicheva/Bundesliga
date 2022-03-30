@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <table class="table  table-dark " style="transform: translateY(350px)">
+      <tbody style="text-align: center; position: center;" >
+        {% for match in second %}
+            <tr>
+                <td style='font-size:35px;text-align: center; '>NEXT GAME</td>
+                <td>
+                    <a style="font-size: 35px; text-align: center; color: chartreuse">{{ match.MatchDateTime |slice:"0:10"  }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        {% for match in second %}
+        <tr >
+            <td><img src="{{ match.Team1.TeamIconUrl}}" style="width: 150px"></td>
+            <td><a style="font-size: 100px; color: black">:</a></td>
+{#            <td><a style="font-size: 35px">{{ match.MatchDateTime |slice:"0:10"  }}</a></td>#}
+            <td><img src="{{ match.Team2.TeamIconUrl}}" style="width: 150px; border-color: black"></td>
+{#    <a style="font-size: 35px">{{ match.Team1.TeamName }}</a>#}
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+{% endblock %}

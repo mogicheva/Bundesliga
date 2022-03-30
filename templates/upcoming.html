@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <h2 style="color: ghostwhite; text-align: center; font-size: 35px"> UPCOMING 2021/2022</h2>
+{#    <h3 style="color: ghostwhite; text-align: center;">Page {{ page.number }}</h3>#}
+    <hr />
+    <table class="table  table-dark table-bordered">
+
+      <tbody style="text-align: center">
+        {% if not upcoming %}
+        <tr>
+          <td> No more matches</td>
+        </tr>
+        {% endif %}
+        {% for match in page.object_list %}
+        <tr>
+          <td>{{ match.MatchDateTime |slice:"0:10"  }}</td>
+          <td><img src="{{ match.Team1.TeamIconUrl}}" style="width: 20px">{{ match.Team1.TeamName }}</td>
+          <td> - </td>
+          <td><img src="{{ match.Team2.TeamIconUrl}}" style="width: 20px">{{ match.Team2.TeamName }}</td>
+
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="paginator" style="text-align: center; ">
+        {% if page.has_previous %}
+            <a href="{% url 'upcoming' %}?page={{ page.previous_page_number }}" style="color: white; font-size: 18px">Previous Page</a>
+        {% endif %}
+        {% if page.has_next %}
+            <a href="{% url 'upcoming' %}?page={{ page.next_page_number }}" style="color: white; font-size: 18px" >Next Page</a>
+        {% endif %}
+    </div>
+{% endblock %}
