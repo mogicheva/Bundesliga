@@ -18,16 +18,18 @@ class Bundesliga:
     def bundesliga_weekend(self):
         current_season = self.bundesliga_season()
         today = datetime.date.today()
+        fri = today + datetime.timedelta((4 - today.weekday()) % 7)
         sat = today + datetime.timedelta((5 - today.weekday()) % 7)
         sun = today + datetime.timedelta((6 - today.weekday()) % 7)
+        mon = today + datetime.timedelta(days=-today.weekday(), weeks=1)
 
-        weekdays = {'Saturday': sat, 'Sunday': sun}
+        weekdays = {'Friday': fri, 'Saturday': sat, 'Sunday': sun, 'Monday': mon}
         result = []
 
         for match in current_season:
             date = match["MatchDateTime"]
             transformed_day = str(date[0:10])
-            if transformed_day == str(weekdays['Saturday']) or transformed_day == str(weekdays['Sunday']):
+            if transformed_day == str(weekdays['Saturday']) or transformed_day == str(weekdays['Sunday']) or transformed_day == str(weekdays['Friday']) or transformed_day == str(weekdays['Monday']):
                 result.append(match)
 
         return result
